@@ -29,17 +29,12 @@ namespace NZWalks.API.Repositories
         };
 
 
-        public async Task<bool> AuthenticateAsync(string userName, string password)
+        public async Task<User> AuthenticateAsync(string userName, string password)
         {
             var user = users.Find(x => x.Username.Equals(userName, StringComparison.InvariantCultureIgnoreCase) &&
             x.Password == password);
 
-            if (user != null)
-            {
-                return true;
-            }
-
-            return false;
+            return user;
         }
     }
 }
